@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .error-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #dc3545;
+        }
+
+        .error-icon {
+            font-size: 50px;
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .error-details {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .error-details p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #dc3545;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="error-container">
+    <div class="error-icon">❌</div>
+    <h1>Payment Failed</h1>
+    <p>Sorry, <span th:value="${session.loggedInUser.getFullname()}"></span> something went wrong with your payment.</p>
+    <p>Please try again later.</p>
+
+    <!-- Error Details (Optional) -->
+    <div class="error-details">
+        <p><strong>Error Message:</strong> <span>Payment gateway timeout</span></p>
+    </div>
+
+
+    <a href="/home" class="btn">Go to Homepage</a>
+</div>
+
+</body>
+</html>

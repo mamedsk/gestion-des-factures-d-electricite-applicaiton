@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <title>Checkout Page</title>
+
+    <!-- CSS Styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #444;
+            text-align: center;
+        }
+
+        .checkout-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #EDE8DC;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-section1 {
+            margin-bottom: 30px;
+            margin-right: 100px;
+
+
+        }
+        .form-section2 {
+            margin-bottom: 30px;
+
+
+        }
+
+
+        .summary-table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            margin-right: 10px;
+        }
+
+        .summary-table th, .summary-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .summary-table th {
+            background-color: #f8f8f8;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            margin-left: 60px;
+        }
+
+        .credit-card, .paypal {
+            width: 60%;
+        }
+
+        .paypal p {
+            margin: 20px 0;
+        }
+
+        .btn-paypal {
+            background-color: #0070ba;
+        }
+
+        .btn-paypal:hover {
+            background-color: #005fa0;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .payment-options {
+                flex-direction: column;
+            }
+
+            .credit-card, .paypal {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+ <div class="checkout-container">
+
+
+    <!-- Order Summary -->
+    <div class="form-section1">
+        <h2>Order Summary</h2>
+        <table class="summary-table">
+            <thead>
+            <tr>
+                <th>bill id</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${id}"></td>
+                <td th:text="${amount}"></td>
+                <td th:text="${dueDate}"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>Total</strong></td>
+                <td th:text="${amount}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Billing Details -->
+    <div class="form-section2">
+        <h2>Billing Details</h2>
+
+
+            <!-- Payment Method Options -->
+
+            <div class="payment-options">
+
+                <!-- Credit Card Payment -->
+                <div class="credit-card">
+
+                    <label>Credit Card</label><br>
+                    <img src="https://4a7efb2d53317100f611-1d7064c4f7b6de25658a4199efb34975.ssl.cf1.rackcdn.com/visa-mastercard-agree-to-give-gas-pumps-break-on-emv-shift-showcase_image-9-p-2335.jpg"
+                         alt="PayPal" style="height: 50px;width: 40%; vertical-align: middle; margin-right: 10px;">
+                    <br>
+
+                    <!-- Credit Card Form -->
+                    <div>
+                        <label >Card Number</label>
+                        <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9101 1121" >
+
+                        <label >Expiry Month</label>
+                        <input type="text" id="exp-month" name="expMonth" placeholder="MM" >
+
+                        <label >Expiry Year</label>
+                        <input type="text" placeholder="YYYY" >
+
+                        <label>CVV</label>
+                        <input type="text" id="cvv" name="cvv" placeholder="123" >
+                    </div>
+                    <span style="color: red">NB:paying with card is not available right now please use Paypal! </span>
+                </div>
+
+                <BR>
+                <BR>
+                <!-- PayPal Payment -->
+                <form th:action="@{/payment/create}" method="post">
+                <div class="paypal">
+
+
+
+                    <!-- PayPal button -->
+
+                    <div >
+                        <label >PayPal</label>
+                        <p>Click the button below to proceed to PayPal:</p>
+                        <button type="submit" class="btn btn-paypal">
+                            <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg"
+                                 alt="PayPal" style="height: 30px; vertical-align: middle; margin-right: 10px;">
+                            Proceed with PayPal
+                        </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+
+
+
+    </div>
+ </div>
+
+</body>
+</html>

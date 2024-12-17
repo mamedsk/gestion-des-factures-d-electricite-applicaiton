@@ -1,0 +1,135 @@
+.cards {
+    max-width: 900px;
+    margin: auto;
+}
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+.btn {
+    margin: 5px;
+}
+
+/* Adjust the colors for buttons */
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 1rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin-left: 1.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+
+    .navbar {
+        flex-direction: column;
+        padding: 1rem 0.5rem;
+    }
+
+    .navbar-brand {
+        margin-bottom: 1rem;
+    }
+}
+
+.calcutor{
+    width:100%;
+    background-color: GrayText;
+    text-align: center;
+    font-size: 20px;
+    padding: 30px;
+    border-radius: 10px;
+}
+input[type=button]{
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 7px;
+    color: black;
+}
+input[type=button]:hover{
+    background-color: gray;
+    padding: 10px 20px;
+    border-radius: 7px;
+    color: white;
+}
+input[type=number] {
+    width: 40%;
+    padding: 7px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

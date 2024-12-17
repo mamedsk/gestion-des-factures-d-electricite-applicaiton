@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Successful</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .success-container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #28a745;
+    }
+
+    .success-icon {
+      font-size: 50px;
+      color: #28a745;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .transaction-details {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .transaction-details p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<div class="success-container">
+  <div class="success-icon">✔️</div>
+  <h1>Payment Successful!</h1>
+  <p>Thank you, <span th:value="${session.loggedInUser.fullname}"></span>, for your payment.</p>
+  <p>Your order has been successfully processed.</p>
+
+  <!-- Transaction Details -->
+  <div class="transaction-details" th:if="${transaction != null}">
+    <p><strong>Transaction ID:</strong> <span th:text="${transaction.id}">12345</span></p>
+    <p><strong>Amount Paid:</strong> $<span th:text="${transaction.amount}">200.00</span></p>
+    <p><strong>Date:</strong> <span th:text="${transaction.date}">September 20, 2024</span></p>
+  </div>
+
+  <a href="/home" class="btn">Return home</a>
+</div>
+
+</body>
+</html>
